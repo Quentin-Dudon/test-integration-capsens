@@ -1,0 +1,48 @@
+// Centrer un élement
+@mixin flex-center {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+// Convertisseur px => rem
+@mixin rem($property, $values, $base: 16) {
+    $result: ();
+
+    @each $value in $values {
+        @if type-of($value) == number {
+            $result: append($result, ($value / $base) * 1rem);
+        } @else {
+            $result: append($result, $value);
+        }
+    }
+
+    #{$property}: $result;
+}
+
+// Conteneurs personnalisés 
+@mixin custom-container-lg() {
+    width: 100%;
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
+    @include rem(padding-left, 16); 
+    @include rem(padding-right, 16); 
+}
+
+@mixin custom-container-sm() {
+    width: 100%;
+    max-width: 1232px;
+    margin-right: auto;
+    margin-left: auto;
+    @include rem(padding-left, 16); 
+    @include rem(padding-right, 16); 
+}
+
+// Media Queries
+@mixin sm-screen { @media (min-width: 576px) { @content; } }   // (≥ 576px)
+@mixin md-screen { @media (min-width: 768px) { @content; } }   // (≥ 768px)
+@mixin lg-screen { @media (min-width: 992px) { @content; } }   // (≥ 992px)
+@mixin xl-screen { @media (min-width: 1200px) { @content; } }  // (≥ 1200px)
+@mixin xxl-screen { @media (min-width: 1400px) { @content; } } // (≥ 1400px)
+@mixin xxxl-screen { @media (min-width: 1920px) { @content; } } // (≥ 1920px)

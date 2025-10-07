@@ -1,0 +1,51 @@
+.header {
+    background-color: $white;
+    height: $header-height;
+    @include flex-center; 
+
+    &__logo {
+        &-img {
+            width: 120px; 
+            height: 24px; 
+
+            @include sm-screen {
+                width: 167px; 
+                height: 34px; 
+            }
+        }
+    }
+
+    &__user {
+        @include flex-center;
+
+        &-img {
+            width: 30px;
+            height: 31px;
+        }
+
+        &-button {
+            padding: 0;
+            position: relative;
+            border: none;
+            background-color: $white;
+            @include rem(margin-right, 8);
+
+            @include sm-screen {
+                @include rem(margin-right, 16);
+            }            
+        }
+        &-name {
+            margin-bottom: 0;
+            font-weight: 500;            
+            letter-spacing: 0;
+            @include rem(font-size, 16);
+            @include rem(line-height, 24);
+        }
+        &-balance {
+            font-weight: 400;
+            color: $dark-grey; 
+            @include rem(font-size, 14);
+            @include rem(line-height, 18);
+        }
+    }
+}

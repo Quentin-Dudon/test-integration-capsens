@@ -1,0 +1,66 @@
+body {
+    font-family: $font-stack;
+    margin: 0;
+    padding: 0;
+    background-color: $light-grey;
+}
+
+// Classes de couleurs
+.primary-blue {
+    color: $primary-blue;
+}
+
+// Classes Conteneurs personnalisés 
+.custom-container-lg {
+    @include custom-container-lg();
+}
+
+.custom-container-sm {
+    @include custom-container-sm();
+}
+
+// Boutons
+.primary-button {
+    @include rem(font-size, 16);
+    @include rem(line-height, 24);
+    @include rem(padding, 16 64);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: $white;
+    background-color: $primary-blue;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &::after {
+        content: url("../assets/arrow-right.svg");
+        transition: transform 0.3s ease;
+        transform: translateX(0);
+    }
+
+    &:hover {
+        background-color: $black;
+        &::after {
+            transform: translateX(0.625rem); // 10px -> rem
+        }
+    }
+
+    &:focus-visible {
+        outline: 3px solid rgba($primary-blue, 1);
+        outline-offset: 3px;
+    }
+
+    @media (max-width: 340px) {
+        width: 100%;
+        @include rem(padding, 16 32);
+    }
+
+    @include lg-screen {
+        @include rem(margin-top, 32); 
+    }
+}

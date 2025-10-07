@@ -1,0 +1,221 @@
+@import 'variables';
+@import 'mixins';
+@import 'base';
+@import 'header';
+@import 'footer';
+
+#main-content {
+    min-height: calc(100vh - $header-height - $footer-height);
+
+    form {
+        @include rem(padding, 32); 
+        border: 1px solid $primary-blue;
+        border-radius: 8px;
+        background-color: $white;
+
+        @include lg-screen {
+            @include rem(padding, 48);
+        }
+
+        .form-intro {
+            &__title {
+                font-weight: 600;
+                letter-spacing: -2px;
+                @include rem(font-size, 28);
+                @include rem(line-height, 39);                
+                @include rem(margin-bottom, 16);
+
+                @include md-screen {
+                    @include rem(font-size, 32);
+                    @include rem(line-height, 44); 
+                }
+
+                @include lg-screen {
+                    @include rem(font-size, 39);
+                    @include rem(line-height, 54); 
+                }
+            }
+            &__subtitle {
+                font-weight: 400;
+                letter-spacing: 0;
+                @include rem(font-size, 16);
+                @include rem(line-height, 24);                
+                @include rem(margin-bottom, 48);
+            }
+        }
+
+        .option-card {
+            position: relative;
+
+            &__input {
+                appearance: none;
+                -webkit-appearance: none;
+                width: 22px;
+                height: 22px;
+                border: 1px solid $dark-grey;
+                border-radius: 50%;
+                background-color: $white;
+                z-index: 1;
+                position: absolute;
+
+                &:checked {
+                    border: 1px solid $primary-blue;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        @include rem(width, 14);
+                        @include rem(height, 14);
+                        background: $primary-blue;
+                        border: 1px solid $dark-grey;
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+
+                &:checked + .card {
+                    background-color: $tertiary-blue;
+                    border: 1px solid $primary-blue;
+                    box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
+
+                    .text {
+                        color: $primary-blue;
+                    }
+
+                    svg {
+                        path {
+                            fill: $primary-blue;
+                        }
+                    }
+
+                    .option-card__title, 
+                    .option-card__subtitle {
+                        color: $primary-blue;
+                    }
+                }
+            }
+
+            &__label {
+                @include flex-center;
+                width: 100%;
+                cursor: pointer;
+                transition: background-color 0.2s;
+                border: 1px solid $grey;
+
+                &:hover {
+                    background-color: $light-grey;
+                }
+
+                p {
+                    @include rem(font-size, 16);
+                    @include rem(line-height, 24);
+                    letter-spacing: 0;
+                    margin-bottom: 0;
+                    letter-spacing: 0;
+                }
+
+                .option-card__title {
+                    font-weight: 600;
+                }
+
+                .option-card__subtitle {
+                    font-weight: 400;
+                }
+            }
+
+            // Option : personne physique
+            &--type-person {
+                .option-card__input {
+                    @include rem(top, 24); 
+                    left: 50%;
+                    transform: translateX(-50%);
+                } 
+                .option-card__label {
+                    justify-content: flex-start;
+
+                    .option-card__title {
+                        @include rem(margin, 12 0 4)
+                    }
+                    @include rem(padding, 70 16 24); 
+                }
+
+                .option-card__content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                @include lg-screen {
+                    .option-card__input {
+                        top: 50%; 
+                        @include rem(left, 24);
+                        transform: translateY(-50%);
+                    }  
+                    .option-card__label {
+                        flex-direction: row; 
+
+                        svg {
+                            @include rem(margin-right, 24)
+                        }
+
+                        .option-card__title {
+                            @include rem(margin, 0 0 4)
+                        }
+                        @include rem(padding, 24 24 24 94); 
+                    }
+
+                    .option-card__content {
+                        align-items: flex-start;
+                    }
+                }
+            }
+
+            // Option : personne morale
+            &--type-morale {
+                @include rem(margin-bottom, 32); 
+
+                @include lg-screen {
+                    margin-bottom: 0;
+                }
+
+                .option-card__input {
+                    @include rem(top, 24); 
+                    left: 50%;
+                    transform: translateX(-50%);
+                } 
+                .option-card__label {
+                    @include rem(padding, 70 16 24); 
+
+                    .option-card__title {
+                        @include rem(margin, 12 0 4)
+                    }
+                }
+            }
+        }
+
+        .separator {
+            @include flex-center; 
+            @include rem(margin, 32 0); 
+
+            &::before,
+            &::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background-color: $grey;
+            }
+
+            p {
+                color: $black;
+                font-weight: 400;
+                letter-spacing: 0;
+                @include rem(font-size, 16);
+                @include rem(line-height, 24);                
+                @include rem(margin, 0 32);                
+            }
+        }
+    }
+}
+
