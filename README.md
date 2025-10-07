@@ -1,10 +1,10 @@
-# 🖥️ Test d’intégration Capsens
+# Test d’intégration Capsens
 
 Intégration d’une maquette **Figma** en **HTML**, **SCSS** et **Bootstrap**.  
 
 ---
 
-## 🚀 Lancer le projet
+## Lancer le projet
 
 Compiler le SCSS en CSS avec la commande suivante :
 
